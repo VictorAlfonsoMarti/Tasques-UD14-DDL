@@ -1,0 +1,22 @@
+CREATE DATABASE EJERCICIO_1;
+USE EJERCICIO_1;
+GO
+CREATE TABLE Estacion (
+	Identificador INT PRIMARY KEY IDENTITY(1,1),
+	Latitud VARCHAR(15),
+	Longitud VARCHAR(15),
+	Altitud VARCHAR(15)
+	);
+CREATE TABLE Muestra (
+	Identifacro INT PRIMARY KEY IDENTITY(1,1),
+	IdentificadorEstacion INT FOREIGN KEY REFERENCES Estacion(Identificador) ON DELETE NO ACTION ON UPDATE CASCADE,
+	Fecha DATE,
+	TemperaturaMinima INT,
+	TemperaturaMaxima INT,
+	Precipitaciones INT,
+	HumedadMinima INT,
+	HumedadMaxima INT,
+	VelocidadVientoMinima INT,
+	VelocidadVientoMaxima INT
+	);
+
