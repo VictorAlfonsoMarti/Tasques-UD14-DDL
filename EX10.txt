@@ -1,0 +1,22 @@
+CREATE DATABASE EJERCICIO_10;
+USE EJERCICIO_10;
+GO
+CREATE TABLE Productos (
+	Codigo INT PRIMARY KEY IDENTITY(1,1),
+	Nombre NVARCHAR(100),
+	Precio INT
+)
+CREATE TABLE Cajeros (
+	Codigo INT PRIMARY KEY IDENTITY(1,1),
+	NomApels NVARCHAR(255)
+)
+CREATE TABLE Maquinas_Registradoras (
+	Codigo INT PRIMARY KEY IDENTITY(1,1),
+	Piso INT
+)
+CREATE TABLE Venta (
+	Cajero INT FOREIGN KEY REFERENCES Cajeros(Codigo),
+	Maquina INT FOREIGN KEY REFERENCES Maquinas_Registradoras(Codigo),
+	Producto INT FOREIGN KEY REFERENCES Productos(Codigo),
+	CONSTRAINT PK_Venta PRIMARY KEY (Cajero, Maquina, Producto)
+)
